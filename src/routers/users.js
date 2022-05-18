@@ -3,8 +3,6 @@ const express = require('express')
 const router = express.Router()
 router.use(express.json())
 
-const { Client } = require('pg') // postgreSQL
-
 async function connect() {
     const client = new Client({
         user: 'androiduser',

@@ -18,7 +18,7 @@ async function connect() {
 
 router.get('/', async (req, res) => {
     const client = await connect()
-    const query = 'SELECT * FROM user_interests'
+    const query = 'SELECT * FROM user_interest'
 
     const result = await client.query(query)
 

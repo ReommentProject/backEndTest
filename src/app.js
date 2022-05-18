@@ -14,7 +14,7 @@ app.use('/users', userRouter)
 app.use('/comments', commentRouter)
 app.use('/friends', friendRouter)
 app.use('/posts', postRouter)
-app.use('userInterest', userInterestRouter)
+app.use('/userInterest', userInterestRouter)
 
 // app.use((err, req, res, next) => {
 //     res.statusCode = err.statusCode || 500

@@ -1,0 +1,46 @@
+/* Drop Tables */
+
+DROP TABLE IF EXISTS Comments;
+
+/* Create Tables */
+
+-- 댓글
+CREATE TABLE Comments
+(
+   -- comment_id
+   comment_id int NOT NULL,
+   -- user_id
+   user_id varchar(15) NOT NULL,
+   -- post_id
+   post_id int NOT NULL,
+   -- 내용
+   content varchar(200) NOT NULL,
+   -- 올린 시간
+   update_time timestamp with time zone NOT NULL,
+   PRIMARY KEY (comment_id)
+) WITHOUT OIDS;
+
+/* Create Foreign Keys */
+
+ALTER TABLE Comments
+   ADD FOREIGN KEY (post_id)
+   REFERENCES Posts (post_id)
+   ON UPDATE RESTRICT
+   ON DELETE RESTRICT
+;
+
+ALTER TABLE Comments
+   ADD FOREIGN KEY (user_id)
+   REFERENCES Users (id)
+   ON UPDATE RESTRICT
+   ON DELETE RESTRICT 
+;
+
+/* Comments */
+
+COMMENT ON TABLE Comments IS '댓글';
+COMMENT ON COLUMN Comments.comment_id IS 'comment_id';
+COMMENT ON COLUMN Comments.user_id IS 'user_id';
+COMMENT ON COLUMN Comments.post_id IS 'post_id';
+COMMENT ON COLUMN Comments.content IS '내용';
+COMMENT ON COLUMN Comments.update_time IS '올린 시간';

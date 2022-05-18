@@ -1,0 +1,30 @@
+/* Drop Tables */
+
+DROP TABLE IF EXISTS User_Interest;
+
+/* Create Tables */
+
+-- 관심분야
+CREATE TABLE User_Interest
+(
+   -- user_id
+   user_id varchar(15) NOT NULL,
+   -- 관심분야
+   interest varchar(10) NOT NULL,
+   PRIMARY KEY (user_id, interest)
+) WITHOUT OIDS;
+
+/* Create Foreign Keys */
+
+ALTER TABLE User_Interest
+   ADD FOREIGN KEY (user_id)
+   REFERENCES Users (id)
+   ON UPDATE RESTRICT
+   ON DELETE RESTRICT
+;
+
+/* Comments */
+
+COMMENT ON TABLE User_Interest IS '관심분야';
+COMMENT ON COLUMN User_Interest.user_id IS 'user_id';
+COMMENT ON COLUMN User_Interest.interest IS '관심분야';

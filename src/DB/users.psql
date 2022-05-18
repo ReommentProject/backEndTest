@@ -1,0 +1,33 @@
+/* Drop Tables */
+
+DROP TABLE IF EXISTS Users;
+
+/* Create Tables */
+
+-- 사용자
+CREATE TABLE Users
+(
+   -- 아이디
+   id varchar(15) NOT NULL UNIQUE,
+   -- 비밀번호
+   password varchar(15) NOT NULL,
+   -- 닉네임
+   nickname varchar(15) NOT NULL UNIQUE,
+   -- 자기소개
+   introduce varchar(200),
+   -- 성별
+   gender boolean NOT NULL,
+   -- 프로필사진
+   profile_image varchar,
+   PRIMARY KEY (id)
+) WITHOUT OIDS;
+
+/* Comments */
+
+COMMENT ON TABLE Users IS '사용자';
+COMMENT ON COLUMN Users.id IS '아이디';
+COMMENT ON COLUMN Users.password IS '비밀번호';
+COMMENT ON COLUMN Users.nickname IS '닉네임';
+COMMENT ON COLUMN Users.introduce IS '자기소개';
+COMMENT ON COLUMN Users.gender IS '성별';
+COMMENT ON COLUMN Users.profile_image IS '프로필사진';

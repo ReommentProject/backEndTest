@@ -1,0 +1,48 @@
+/* Drop Tables */
+
+DROP TABLE IF EXISTS Posts;
+
+/* Create Tables */
+
+-- 글
+CREATE TABLE Posts
+(
+   -- post_id
+   post_id int NOT NULL,
+   -- user_id
+   user_id varchar(15) NOT NULL,
+   -- 좋아요 수
+   post_like int,
+   -- 제목
+   title varchar(30) NOT NULL,
+   -- 내용
+   content varchar(300),
+   -- 썸네일
+   thumbnail varchar,
+   -- 영상 링크
+   video_link varchar,
+   -- 올린 시간
+   update_time timestamp with time zone NOT NULL,
+   PRIMARY KEY (post_id)
+) WITHOUT OIDS;
+
+/* Create Foreign Keys */
+
+ALTER TABLE Posts
+   ADD FOREIGN KEY (user_id)
+   REFERENCES Users (id)
+   ON UPDATE RESTRICT
+   ON DELETE RESTRICT
+;
+
+/* Comments */
+
+COMMENT ON TABLE Posts IS '글';
+COMMENT ON COLUMN Posts.post_id IS 'post_id';
+COMMENT ON COLUMN Posts.user_id IS 'user_id';
+COMMENT ON COLUMN Posts.post_like IS '좋아요 수';
+COMMENT ON COLUMN Posts.title IS '제목';
+COMMENT ON COLUMN Posts.content IS '내용';
+COMMENT ON COLUMN Posts.thumbnail IS '썸네일';
+COMMENT ON COLUMN Posts.video_link IS '영상 링크';
+COMMENT ON COLUMN Posts.update_time IS '올린 시간';

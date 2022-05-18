@@ -1,0 +1,37 @@
+/* Drop Tables */
+
+DROP TABLE IF EXISTS Friends;
+
+/* Create Tables */
+
+-- 친구
+CREATE TABLE Friends
+(
+   -- 친구추가 한 사람
+   user_id varchar(15) NOT NULL,
+   -- 친구추가 받은 사람
+   friend_id varchar(15) NOT NULL,
+   PRIMARY KEY (user_id, friend_id)
+) WITHOUT OIDS;
+
+/* Create Foreign Keys */
+
+ALTER TABLE Friends
+   ADD FOREIGN KEY (user_id)
+   REFERENCES Users (id)
+   ON UPDATE RESTRICT
+   ON DELETE RESTRICT
+;
+
+ALTER TABLE Friends
+   ADD FOREIGN KEY (friend_id)
+   REFERENCES Users (id)
+   ON UPDATE RESTRICT
+   ON DELETE RESTRICT
+;
+
+/* Comments */
+
+COMMENT ON TABLE Friends IS '친구';
+COMMENT ON COLUMN Friends.user_id IS '친구추가 한 사람';
+COMMENT ON COLUMN Friends.friend_id IS '친구추가 받은 사람';

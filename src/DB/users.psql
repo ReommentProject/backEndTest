@@ -1,11 +1,11 @@
 /* Drop Tables */
 
-DROP TABLE IF EXISTS Users;
+DROP TABLE IF EXISTS users;
 
 /* Create Tables */
 
 -- 사용자
-CREATE TABLE Users
+CREATE TABLE users
 (
    -- 아이디
    id varchar(15) NOT NULL UNIQUE,
@@ -24,10 +24,10 @@ CREATE TABLE Users
 
 /* Comments */
 
-COMMENT ON TABLE Users IS '사용자';
-COMMENT ON COLUMN Users.id IS '아이디';
-COMMENT ON COLUMN Users.password IS '비밀번호';
-COMMENT ON COLUMN Users.nickname IS '닉네임';
-COMMENT ON COLUMN Users.introduce IS '자기소개';
-COMMENT ON COLUMN Users.gender IS '성별';
-COMMENT ON COLUMN Users.profile_image IS '프로필사진';
+COMMENT ON TABLE users IS '사용자';
+COMMENT ON COLUMN users.id IS '아이디';
+COMMENT ON COLUMN users.password IS '비밀번호';
+COMMENT ON COLUMN users.nickname IS '닉네임';
+COMMENT ON COLUMN users.introduce IS '자기소개';
+COMMENT ON COLUMN users.gender IS '성별';
+COMMENT ON COLUMN users.profile_image IS '프로필사진';

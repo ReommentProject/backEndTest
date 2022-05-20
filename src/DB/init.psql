@@ -1,15 +1,15 @@
 /* Drop Tables */
 
-DROP TABLE IF EXISTS Comments;
-DROP TABLE IF EXISTS Friends;
-DROP TABLE IF EXISTS Posts;
-DROP TABLE IF EXISTS User_Interest;
-DROP TABLE IF EXISTS Users;
+DROP TABLE IF EXISTS comments;
+DROP TABLE IF EXISTS friends;
+DROP TABLE IF EXISTS posts;
+DROP TABLE IF EXISTS user_interest;
+DROP TABLE IF EXISTS users;
 
 /* Create Tables */
 
 -- 댓글
-CREATE TABLE Comments
+CREATE TABLE comments
 (
    -- comment_id
    comment_id int NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE Comments
 ) WITHOUT OIDS;
 
 -- 친구
-CREATE TABLE Friends
+CREATE TABLE friends
 (
    -- 친구추가 한 사람
    user_id varchar(15) NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE Friends
 ) WITHOUT OIDS;
 
 -- 글
-CREATE TABLE Posts
+CREATE TABLE posts
 (
    -- post_id
    post_id int NOT NULL,
@@ -57,7 +57,7 @@ CREATE TABLE Posts
 ) WITHOUT OIDS;
 
 -- 사용자
-CREATE TABLE Users
+CREATE TABLE users
 (
    -- 아이디
    id varchar(15) NOT NULL UNIQUE,
@@ -75,7 +75,7 @@ CREATE TABLE Users
 ) WITHOUT OIDS;
 
 -- 관심분야
-CREATE TABLE User_Interest
+CREATE TABLE user_interest
 (
    -- user_id
    user_id varchar(15) NOT NULL,
@@ -86,75 +86,75 @@ CREATE TABLE User_Interest
 
 /* Create Foreign Keys */
 
-ALTER TABLE Comments
+ALTER TABLE comments
    ADD FOREIGN KEY (post_id)
-   REFERENCES Posts (post_id)
+   REFERENCES posts (post_id)
    ON UPDATE RESTRICT
    ON DELETE RESTRICT
 ;
 
-ALTER TABLE Comments
+ALTER TABLE comments
    ADD FOREIGN KEY (user_id)
-   REFERENCES Users (id)
+   REFERENCES users (id)
    ON UPDATE RESTRICT
    ON DELETE RESTRICT 
 ;
 
-ALTER TABLE Friends
+ALTER TABLE friends
    ADD FOREIGN KEY (user_id)
-   REFERENCES Users (id)
+   REFERENCES users (id)
    ON UPDATE RESTRICT
    ON DELETE RESTRICT
 ;
 
-ALTER TABLE Friends
+ALTER TABLE friends
    ADD FOREIGN KEY (friend_id)
-   REFERENCES Users (id)
+   REFERENCES users (id)
    ON UPDATE RESTRICT
    ON DELETE RESTRICT
 ;
 
-ALTER TABLE Posts
+ALTER TABLE posts
    ADD FOREIGN KEY (user_id)
-   REFERENCES Users (id)
+   REFERENCES users (id)
    ON UPDATE RESTRICT
    ON DELETE RESTRICT
 ;
 
-ALTER TABLE User_Interest
+ALTER TABLE user_interest
    ADD FOREIGN KEY (user_id)
-   REFERENCES Users (id)
+   REFERENCES users (id)
    ON UPDATE RESTRICT
    ON DELETE RESTRICT
 ;
 
-/* Comments */
+/* comments */
 
-COMMENT ON TABLE Comments IS '댓글';
-COMMENT ON COLUMN Comments.comment_id IS 'comment_id';
-COMMENT ON COLUMN Comments.user_id IS 'user_id';
-COMMENT ON COLUMN Comments.post_id IS 'post_id';
-COMMENT ON COLUMN Comments.content IS '내용';
-COMMENT ON COLUMN Comments.update_time IS '올린 시간';
-COMMENT ON TABLE Friends IS '친구';
-COMMENT ON COLUMN Friends.user_id IS '친구추가 한 사람';
-COMMENT ON COLUMN Friends.friend_id IS '친구추가 받은 사람';
-COMMENT ON TABLE Posts IS '글';
-COMMENT ON COLUMN Posts.post_id IS 'post_id';
-COMMENT ON COLUMN Posts.user_id IS 'user_id';
-COMMENT ON COLUMN Posts.post_like IS '좋아요 수';
-COMMENT ON COLUMN Posts.title IS '제목';
-COMMENT ON COLUMN Posts.content IS '내용';
-COMMENT ON COLUMN Posts.thumbnail IS '썸네일';
-COMMENT ON COLUMN Posts.video_link IS '영상 링크';
-COMMENT ON COLUMN Posts.update_time IS '올린 시간';
-COMMENT ON TABLE Users IS '사용자';
-COMMENT ON COLUMN Users.id IS '아이디';
-COMMENT ON COLUMN Users.password IS '비밀번호';
-COMMENT ON COLUMN Users.nickname IS '닉네임';
-COMMENT ON COLUMN Users.introduce IS '자기소개';
-COMMENT ON COLUMN Users.gender IS '성별';
-COMMENT ON COLUMN Users.profile_image IS '프로필사진';
-COMMENT ON TABLE User_Interest IS '관심분야';
-COMMENT ON COLUMN User_Interest.user_id IS 'user_id';
-COMMENT ON COLUMN User_Interest.interest IS '관심분야';
+COMMENT ON TABLE comments IS '댓글';
+COMMENT ON COLUMN comments.comment_id IS 'comment_id';
+COMMENT ON COLUMN comments.user_id IS 'user_id';
+COMMENT ON COLUMN comments.post_id IS 'post_id';
+COMMENT ON COLUMN comments.content IS '내용';
+COMMENT ON COLUMN comments.update_time IS '올린 시간';
+COMMENT ON TABLE friends IS '친구';
+COMMENT ON COLUMN friends.user_id IS '친구추가 한 사람';
+COMMENT ON COLUMN friends.friend_id IS '친구추가 받은 사람';
+COMMENT ON TABLE posts IS '글';
+COMMENT ON COLUMN posts.post_id IS 'post_id';
+COMMENT ON COLUMN posts.user_id IS 'user_id';
+COMMENT ON COLUMN posts.post_like IS '좋아요 수';
+COMMENT ON COLUMN posts.title IS '제목';
+COMMENT ON COLUMN posts.content IS '내용';
+COMMENT ON COLUMN posts.thumbnail IS '썸네일';
+COMMENT ON COLUMN posts.video_link IS '영상 링크';
+COMMENT ON COLUMN posts.update_time IS '올린 시간';
+COMMENT ON TABLE users IS '사용자';
+COMMENT ON COLUMN users.id IS '아이디';
+COMMENT ON COLUMN users.password IS '비밀번호';
+COMMENT ON COLUMN users.nickname IS '닉네임';
+COMMENT ON COLUMN users.introduce IS '자기소개';
+COMMENT ON COLUMN users.gender IS '성별';
+COMMENT ON COLUMN users.profile_image IS '프로필사진';
+COMMENT ON TABLE user_interest IS '관심분야';
+COMMENT ON COLUMN user_interest.user_id IS 'user_id';
+COMMENT ON COLUMN user_interest.interest IS '관심분야';

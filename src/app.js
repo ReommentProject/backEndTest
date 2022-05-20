@@ -9,12 +9,15 @@ const commentRouter = require('./routers/comments')
 const friendRouter = require('./routers/friends')
 const postRouter = require('./routers/posts')
 const userInterestRouter = require('./routers/user_interest')
+const testRouter = require('./routers/test')
 
 app.use('/users', userRouter)
 app.use('/comments', commentRouter)
 app.use('/friends', friendRouter)
 app.use('/posts', postRouter)
 app.use('/userInterest', userInterestRouter)
+
+app.use('/test', testRouter)
 
 // app.use((err, req, res, next) => {
 //     res.statusCode = err.statusCode || 500

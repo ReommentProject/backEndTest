@@ -32,6 +32,10 @@ router.get('/', async (req, res) => {
 
 router.post('/cUser', async (req, res) => {
     const client = await connect()
+
+    /**
+     * @type {{String, number}}
+     */
     const { name, age } = req.body
 
     console.log(req.body.age)
